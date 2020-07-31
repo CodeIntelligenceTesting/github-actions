@@ -1,23 +1,23 @@
 name: "Monitor Fuzzing"
 description: "Monitor a Test Collection Run until it crashes or reaches the timeout"
 inputs:
-  cognito-user:
+  cognito_user:
     description: "Cognito credentials to authenticate with Code-Intelligence's fuzzing server"
     required: true
-  cognito-password:
+  cognito_password:
     description: "Cognito credentials to authenticate with Code-Intelligence's fuzzing server"
     required: true
   project:
     description: "Name of the project"
     required: true
-  test-collection-run:
+  test_collection_run:
     description: "Name of the Test Collection Run"
     required: true
   timeout:
     description: "Timeout (in seconds) to monitor the fuzzing. If no crash was found when it times out, the action is considered successful."
     required: false
     default: 300
-  fuzzing-server-address:
+  fuzzing_server_address:
     description: "URL of Code-Intelligence's gRPC server for fuzzing"
     required: false
     default: "grpc-api.cloud.code-intelligence.com:443"

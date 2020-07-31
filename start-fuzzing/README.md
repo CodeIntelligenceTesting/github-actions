@@ -4,11 +4,11 @@ This action builds and starts fuzzing a Test Collection.
 
 ## Inputs
 
-### `cognito-user`
+### `cognito_user`
 
 **Required** Cognito user to authenticate with Code-Intelligence's fuzzing server.
 
-### `cognito-password`
+### `cognito_password`
 
 **Required** Password of the Cognito user used to authenticate with Code-Intelligence's fuzzing server.
 
@@ -16,22 +16,22 @@ This action builds and starts fuzzing a Test Collection.
 
 **Required** Name of the project to fuzz.
 
-### `test-collection`
+### `test_collection`
 
 **Required** Name of the Test Collection to fuzz.
 
-### `report-email`
+### `report_email`
 
 E-mail to receive crash reports.
 
-### `fuzzing-server-address`
+### `fuzzing_server_address`
 
 URL of Code-Intelligence's gRPC server for fuzzing.
 Set this input if you wish to use a fuzzing server other than Code-Intelligence's cloud.
 
 ## Outputs
 
-### `test-collection-run`
+### `test_collection_run`
 
 Name of the test collection run that was just started, it will be used as input for the `monitor-fuzzing` GitHub Action.
 
