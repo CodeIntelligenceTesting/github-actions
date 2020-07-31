@@ -21,6 +21,10 @@ inputs:
     description: "URL of Code-Intelligence's gRPC server for fuzzing"
     required: false
     default: "grpc-api.cloud.code-intelligence.com:443"
+  dashboard_address:
+    description: "URL of Code-Intelligence's fuzzing dashboard"
+    required: false
+    default: "https://dashboard.cloud.code-intelligence.com"
 runs:
   using: "docker"
   image: "docker://cifuzz/cictl:2.14-alpha"

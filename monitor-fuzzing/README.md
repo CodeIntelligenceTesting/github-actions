@@ -31,6 +31,11 @@ Timeout (in seconds) to monitor the fuzzing. If no crash was found when it times
 URL of Code-Intelligence's gRPC server for fuzzing.
 Set this input if you wish to use a fuzzing server other than Code-Intelligence's cloud.
 
+### `dashboard_address`
+
+URL Code-Intelligence's dashboard. Used to display a link to the crash if one is found during fuzzing. 
+
+
 ## Example usage
 
 ```
