@@ -1,5 +1,5 @@
-name: "Start Fuzzing"
-description: "Start fuzzing a Test Collection"
+name: "Build And Start Fuzzing"
+description: "Build the Test Collection for fuzzing and starts it"
 inputs:
   cognito_user:
     description: "Cognito credentials to authenticate with Code-Intelligence's fuzzing server"
