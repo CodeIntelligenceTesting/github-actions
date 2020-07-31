@@ -1,6 +1,6 @@
-# Start Fuzzing
+# Monitor Fuzzing
 
-This action builds and starts fuzzing a Test Collection in the cloud.
+This action monitors a Test Collection run until it finds a crash or times out.
 
 ## Inputs
 

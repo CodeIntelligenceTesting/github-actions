@@ -1,6 +1,6 @@
 # Start Fuzzing
 
-This action builds and starts fuzzing a Test Collection in the cloud.
+This action builds and starts fuzzing a Test Collection.
 
 ## Inputs
 
