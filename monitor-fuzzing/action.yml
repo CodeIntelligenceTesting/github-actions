@@ -17,6 +17,10 @@ inputs:
     description: "Timeout (in seconds) to monitor the fuzzing. If no crash was found when it times out, the action is considered successful."
     required: false
     default: 300
+  findings_type:
+    description: "Comma separated types of findings to monitor. Accepted values: UNKNOWN_ERROR, COMPILATION_ERROR, CRASH, WARNING, RUNTIME_ERROR."
+    required: false
+    default: "UNKNOWN_ERROR,COMPILATION_ERROR"
   fuzzing_server_address:
     description: "URL of Code-Intelligence's gRPC server for fuzzing"
     required: false

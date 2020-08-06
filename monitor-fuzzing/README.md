@@ -26,6 +26,12 @@ Timeout (in seconds) to monitor the fuzzing. If no crash was found when it times
 
 **Default** 5 minutes.
 
+### `findings_type`
+
+Comma separated types of findings to monitor. Accepted values: `UNKNOWN_ERROR`, `COMPILATION_ERROR`, `CRASH`, `WARNING`, `RUNTIME_ERROR`.
+
+**Default** `UNKNOWN_ERROR,COMPILATION_ERROR`.
+
 ### `fuzzing_server_address`
 
 URL of Code-Intelligence's gRPC server for fuzzing.
