@@ -30,7 +30,7 @@ Timeout (in seconds) to monitor the fuzzing. If no crash was found when it times
 
 Comma separated types of findings to monitor. Accepted values: `UNKNOWN_ERROR`, `COMPILATION_ERROR`, `CRASH`, `WARNING`, `RUNTIME_ERROR`.
 
-**Default** `UNKNOWN_ERROR,COMPILATION_ERROR`.
+**Default** `CRASH`.
 
 ### `fuzzing_server_address`
 

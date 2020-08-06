@@ -20,7 +20,7 @@ inputs:
   findings_type:
     description: "Comma separated types of findings to monitor. Accepted values: UNKNOWN_ERROR, COMPILATION_ERROR, CRASH, WARNING, RUNTIME_ERROR."
     required: false
-    default: "UNKNOWN_ERROR,COMPILATION_ERROR"
+    default: "CRASH"
   fuzzing_server_address:
     description: "URL of Code-Intelligence's gRPC server for fuzzing"
     required: false
