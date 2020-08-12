@@ -31,5 +31,5 @@ inputs:
     default: "https://dashboard.cloud.code-intelligence.com"
 runs:
   using: "docker"
-  image: "docker://cifuzz/cictl:2.14-alpha"
+  image: "docker://cifuzz/cictl:latest"
   entrypoint: "monitor_fuzzing.sh"
