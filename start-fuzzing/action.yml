@@ -22,5 +22,5 @@ inputs:
     default: "grpc-api.cloud.code-intelligence.com:443"
 runs:
   using: "docker"
-  image: "docker://cifuzz/cictl:latest"
+  image: "docker://cifuzz/cictl:2.15-alpha"
   entrypoint: "start_fuzzing.sh"
