@@ -25,6 +25,11 @@ This action reports the coverage of a Test Collection in a pull request comment.
 URL of Code-Intelligence's gRPC server for fuzzing.
 Set this input if you wish to use a fuzzing server other than Code-Intelligence's cloud.
 
+### `dashboard_address`
+
+URL Code-Intelligence's dashboard. Used to display a link for further information. 
+
+
 ### `github_token`
 
 GitHub token used by the GitHub API to create a comment.
