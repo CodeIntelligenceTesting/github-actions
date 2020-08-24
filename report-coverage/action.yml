@@ -29,6 +29,8 @@ inputs:
     description: "Owner of the repository that contains the pull request"
   repository:
     description: "Repository that contains the pull request"
+  commit:
+    description: "Commit SHA used when forming the URL to the files"
 runs:
   using: "docker"
   image: "docker://cifuzz/cictl:2.15-alpha"
