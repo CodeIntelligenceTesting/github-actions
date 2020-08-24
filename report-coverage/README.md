@@ -63,5 +63,5 @@ with:
   pull_request_number: ${{ github.event.pull_request.number }}
   owner: ${{ github.event.repository.owner.login }}
   repository: ${{ github.event.repository.name }}
-  commit: $GITHUB_SHA
+  commit: ${{ github.sha }}
 ```
