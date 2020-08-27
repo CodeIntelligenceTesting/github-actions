@@ -41,6 +41,22 @@ Set this input if you wish to use a fuzzing server other than Code-Intelligence'
 
 URL Code-Intelligence's dashboard. Used to display a link to the crash if one is found during fuzzing. 
 
+### `github_token`
+
+GitHub token used by the GitHub API to create a comment in a pull request with a link to the finding.
+
+### `pull_request_number`
+
+Number of the pull request where the comment with the finding link will be created.
+
+### `owner`
+
+Owner of the repository that contains the pull request.
+
+### `repository`
+
+Repository that contains the pull request.
+
 ## Example usage
 
 ```
@@ -50,4 +66,8 @@ with:
   cognito_password: ${{ secrets.COGNITO_PASSWORD }}
   project: ${{ env.PROJECT_NAME }}
   test_collection_run: ${{ steps.start-fuzzing.outputs.test-collection-run }}
+  github_token: ${{ secrets.GITHUB_TOKEN }}
+  pull_request_number: ${{ github.event.pull_request.number }}
+  owner: ${{ github.event.repository.owner.login }}
+  repository: ${{ github.event.repository.name }}
 ```
