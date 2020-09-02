@@ -27,11 +27,11 @@ inputs:
   fuzzing_server_address:
     description: "URL of Code-Intelligence's gRPC server for fuzzing"
     required: false
-    default: "grpc-api.cloud.code-intelligence.com:443"
+    default: "grpc-api.code-intelligence.com:443"
   dashboard_address:
     description: "URL of Code-Intelligence's fuzzing dashboard"
     required: false
-    default: "https://dashboard.cloud.code-intelligence.com"
+    default: "https://app.code-intelligence.com"
   github_token:
     description: "GitHub token used by the GitHub API to create a comment in a pull request with a link to the finding"
   pull_request_number:
