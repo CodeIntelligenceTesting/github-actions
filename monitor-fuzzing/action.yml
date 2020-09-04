@@ -1,4 +1,4 @@
-name: "Monitor Fuzzing"
+name: "Fuzzing"
 description: "Monitor a Test Collection Run until it crashes or reaches the timeout"
 inputs:
   cognito_user:
@@ -42,5 +42,5 @@ inputs:
     description: "Repository that contains the pull request"
 runs:
   using: "docker"
-  image: "docker://cifuzz/cictl:2.15-alpha"
+  image: "docker://cifuzz/cictl:2.14.1"
   entrypoint: "monitor_fuzzing.sh"

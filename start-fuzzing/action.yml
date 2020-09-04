@@ -1,5 +1,5 @@
-name: "Build And Start Fuzzing"
-description: "Build the Test Collection for fuzzing and starts it"
+name: "Build and Instrument"
+description: "Builds the Test Collection for fuzzing, instruments and starts it"
 inputs:
   cognito_user:
     description: "Cognito credentials to authenticate with Code-Intelligence's fuzzing server"
@@ -24,5 +24,5 @@ inputs:
     description: "Git reference used when pulling code from the repository to be fuzzed"
 runs:
   using: "docker"
-  image: "docker://cifuzz/cictl:2.15-alpha"
+  image: "docker://cifuzz/cictl:2.14.1"
   entrypoint: "start_fuzzing.sh"
