@@ -29,6 +29,10 @@ E-mail to receive crash reports.
 URL of Code-Intelligence's gRPC server for fuzzing.
 Set this input if you wish to use a fuzzing server other than Code-Intelligence's cloud.
 
+### `git_reference`
+
+Git reference used when pulling code from the repository to be fuzzed.
+
 ## Outputs
 
 ### `test_collection_run`
@@ -45,4 +49,5 @@ with:
   project: "project_test"
   test_collection: "fuzz_api_DoStuff"          
   report_email: "my@email.com"
+  git_reference: ${{ github.sha }}
 ```

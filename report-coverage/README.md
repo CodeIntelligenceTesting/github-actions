@@ -46,9 +46,9 @@ Owner of the repository that contains the pull request.
 
 Repository that contains the pull request.
 
-### `commit`
+### `git_reference`
 
-Commit SHA used when forming the URL to the files
+Git reference used when forming the URL to the files.
 
 ## Example usage
 
@@ -63,5 +63,5 @@ with:
   pull_request_number: ${{ github.event.pull_request.number }}
   owner: ${{ github.event.repository.owner.login }}
   repository: ${{ github.event.repository.name }}
-  commit: ${{ github.sha }}
+  git_reference: ${{ github.sha }}
 ```
