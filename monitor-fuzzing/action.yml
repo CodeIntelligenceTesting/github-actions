@@ -42,5 +42,5 @@ inputs:
     description: "Repository that contains the pull request"
 runs:
   using: "docker"
-  image: "docker://cifuzz/cictl:2.14.1"
+  image: "docker://gcr.io/code-intelligence/cictl:2.16.0"
   entrypoint: "monitor_fuzzing.sh"
