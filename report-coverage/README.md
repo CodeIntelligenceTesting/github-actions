@@ -4,6 +4,11 @@ This action reports the coverage of a Test Collection in a pull request comment.
 
 ## Inputs
 
+### `ci_fuzz_api_token`
+
+Token generated in the web app for authenticating with the fuzzing server.
+If not specified, authentication will be attempted with Cognito.
+
 ### `cognito_user`
 
 **Required** Cognito user to authenticate with Code-Intelligence's fuzzing server.
@@ -55,8 +60,7 @@ Git reference used when forming the URL to the files.
 ```
 uses: CodeIntelligenceTesting/github-actions/report-coverage@master
 with:
-  cognito_user: ${{ secrets.COGNITO_USER }}
-  cognito_password: ${{ secrets.COGNITO_PASSWORD }}
+  ci_fuzz_api_token: ${{ secrets.CI_FUZZ_API_TOKEN }}
   project: ${{ env.PROJECT_NAME }}
   test_collection: "my_test_collection"  
   github_token: ${{ secrets.GITHUB_TOKEN }}

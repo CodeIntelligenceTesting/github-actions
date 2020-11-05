@@ -4,13 +4,18 @@ This action builds and starts fuzzing a Test Collection.
 
 ## Inputs
 
+### `ci_fuzz_api_token`
+
+Token generated in the web app for authenticating with the fuzzing server.
+If not specified, authentication will be attempted with Cognito.
+
 ### `cognito_user`
 
-**Required** Cognito user to authenticate with Code-Intelligence's fuzzing server.
+Cognito user to authenticate with Code-Intelligence's fuzzing server.
 
 ### `cognito_password`
 
-**Required** Password of the Cognito user used to authenticate with Code-Intelligence's fuzzing server.
+Password of the Cognito user used to authenticate with Code-Intelligence's fuzzing server.
 
 ### `project`
 
@@ -44,8 +49,7 @@ Name of the test collection run that was just started, it will be used as input 
 ```
 uses: CodeIntelligenceTesting/github-actions/start-fuzzing@master
 with:
-  cognito_user: ${{ secrets.COGNITO_USER }}
-  cognito_password: ${{ secrets.COGNITO_PASSWORD }}
+  ci_fuzz_api_token: ${{ secrets.CI_FUZZ_API_TOKEN }}
   project: "project_test"
   test_collection: "fuzz_api_DoStuff"          
   report_email: "my@email.com"

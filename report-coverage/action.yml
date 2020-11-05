@@ -1,12 +1,15 @@
 name: "Report Coverage"
 description: "Create a comment in a pull request with the code coverage of fuzzed files"
 inputs:
+  ci_fuzz_api_token:
+    description: "Token generated in the web app, used for authenticating with the fuzzing server"
+    required: false
   cognito_user:
     description: "Cognito credentials to authenticate with Code-Intelligence's fuzzing server"
-    required: true
+    required: false
   cognito_password:
     description: "Cognito credentials to authenticate with Code-Intelligence's fuzzing server"
-    required: true
+    required: false
   project:
     description: "Name of the project"
     required: true
@@ -33,5 +36,5 @@ inputs:
     description: "Git reference used when forming the URL to the files"
 runs:
   using: "docker"
-  image: "docker://gcr.io/code-intelligence/cictl:2.16.0"
+  image: "docker://gcr.io/code-intelligence/cictl:2.16.1"
   entrypoint: "report_coverage.sh"
