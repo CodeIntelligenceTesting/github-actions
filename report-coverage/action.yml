@@ -36,5 +36,5 @@ inputs:
     description: "Git reference used when forming the URL to the files"
 runs:
   using: "docker"
-  image: "docker://gcr.io/code-intelligence/cictl:2.16.1"
+  image: "docker://gcr.io/code-intelligence/cictl:2.16.2"
   entrypoint: "report_coverage.sh"
