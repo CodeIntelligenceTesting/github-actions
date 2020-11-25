@@ -14,7 +14,7 @@ inputs:
     description: "Name of the project"
     required: true
   test_collection_run:
-    description: "Name of the Test Collection Run"
+    description: "Display Name of the Test Collection Run"
     required: true
   timeout:
     description: "Timeout (in seconds) to monitor the fuzzing. If no crash was found when it times out, the action is considered successful."

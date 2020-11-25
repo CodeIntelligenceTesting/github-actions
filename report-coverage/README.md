@@ -23,7 +23,7 @@ If not specified, authentication will be attempted with Cognito.
 
 ### `test_collection_run`
 
-**Required** Name of the Test Collection run that was started and outputted by the `start-fuzzing` GitHub Action.
+**Required** Resource Name of the Test Collection run that was started and outputted by the `start-fuzzing` GitHub Action.
 
 ### `fuzzing_server_address`
 
