@@ -27,5 +27,5 @@ inputs:
     description: "Git reference used when pulling code from the repository to be fuzzed"
 runs:
   using: "docker"
-  image: "docker://gcr.io/code-intelligence/cictl:2.16.2"
+  image: "docker://gcr.io/code-intelligence/cictl:2.16.3"
   entrypoint: "start_fuzzing.sh"

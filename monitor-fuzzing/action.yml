@@ -13,9 +13,6 @@ inputs:
   project:
     description: "Name of the project"
     required: true
-  test_collection:
-    description: "Name of the Test Collection in the specified project"
-    required: true
   test_collection_run:
     description: "Name of the Test Collection Run"
     required: true
@@ -45,5 +42,5 @@ inputs:
     description: "Repository that contains the pull request"
 runs:
   using: "docker"
-  image: "docker://gcr.io/code-intelligence/cictl:2.16.2"
+  image: "docker://gcr.io/code-intelligence/cictl:2.16.3"
   entrypoint: "monitor_fuzzing.sh"

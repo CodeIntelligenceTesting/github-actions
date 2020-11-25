@@ -21,9 +21,9 @@ If not specified, authentication will be attempted with Cognito.
 
 **Required** Name of the project to be get the coverage from.
 
-### `test_collection`
+### `test_collection_run`
 
-**Required** Name of the Test Collection to get the coverage from.
+**Required** Name of the Test Collection run that was started and outputted by the `start-fuzzing` GitHub Action.
 
 ### `fuzzing_server_address`
 
@@ -62,7 +62,7 @@ uses: CodeIntelligenceTesting/github-actions/report-coverage@master
 with:
   ci_fuzz_api_token: ${{ secrets.CI_FUZZ_API_TOKEN }}
   project: ${{ env.PROJECT_NAME }}
-  test_collection: "my_test_collection"  
+  test_collection_run: ${{ steps.start-fuzzing.outputs.test-collection-run }}
   github_token: ${{ secrets.GITHUB_TOKEN }}
   pull_request_number: ${{ github.event.pull_request.number }}
   owner: ${{ github.event.repository.owner.login }}
