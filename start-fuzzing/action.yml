@@ -27,5 +27,5 @@ inputs:
     description: "Git reference used when pulling code from the repository to be fuzzed"
 runs:
   using: "docker"
-  image: "docker://cifuzz/cictl:2.17.0"
+  image: "docker://cifuzz/github-action:2.17.1-refactor-cictl"
   entrypoint: "start_fuzzing.sh"

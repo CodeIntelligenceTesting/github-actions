@@ -36,5 +36,5 @@ inputs:
     description: "Git reference used when forming the URL to the files"
 runs:
   using: "docker"
-  image: "docker://cifuzz/cictl:2.17.0"
+  image: "docker://cifuzz/github-action:2.17.1-refactor-cictl"
   entrypoint: "report_coverage.sh"
