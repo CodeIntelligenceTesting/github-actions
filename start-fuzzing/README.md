@@ -17,13 +17,9 @@ Cognito user to authenticate with Code-Intelligence's fuzzing server.
 
 Password of the Cognito user used to authenticate with Code-Intelligence's fuzzing server.
 
-### `project`
-
-**Required** Name of the project to fuzz.
-
 ### `test_collection`
 
-**Required** Name of the Test Collection to fuzz.
+**Required** Full name of the Test Collection to fuzz.
 
 ### `report_email`
 
@@ -50,8 +46,7 @@ Name of the test collection run that was just started, it will be used as input 
 uses: CodeIntelligenceTesting/github-actions/start-fuzzing@master
 with:
   ci_fuzz_api_token: ${{ secrets.CI_FUZZ_API_TOKEN }}
-  project: "project_test"
-  test_collection: "fuzz_api_DoStuff"          
-  report_email: "my@email.com"
-  git_reference: ${{ github.sha }}
+  test_collection:   "projects/myProject/campaigns/fuzz_api_DoStuff"          
+  report_email:      "my@email.com"
+  git_reference:     ${{ github.sha }}
 ```
