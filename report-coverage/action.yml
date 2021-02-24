@@ -14,7 +14,7 @@ inputs:
     description: "Name of the project"
     required: true
   test_collection_run:
-    description: "Resource Name of the Test Collection Run"
+    description: "Name of the Test Collection Run"
     required: true
   fuzzing_server_address:
     description: "URL of Code-Intelligence's gRPC server for fuzzing"
@@ -36,5 +36,5 @@ inputs:
     description: "Git reference used when forming the URL to the files"
 runs:
   using: "docker"
-  image: "docker://cifuzz/cictl:2.17.0"
+  image: "docker://cifuzz/github-action:v3"
   entrypoint: "report_coverage.sh"
