@@ -10,8 +10,11 @@ inputs:
   cognito_password:
     description: "Cognito credentials to authenticate with Code-Intelligence's fuzzing server"
     required: false
+  project:
+    description: "Name of the project"
+    required: true
   test_collection_run:
-    description: "Name of the Test Collection Run"
+    description: "Display Name of the Test Collection Run"
     required: true
   timeout:
     description: "Timeout (in seconds) to monitor the fuzzing. If no crash was found when it times out, the action is considered successful."
@@ -39,5 +42,5 @@ inputs:
     description: "Repository that contains the pull request"
 runs:
   using: "docker"
-  image: "docker://cifuzz/github-action:v3"
+  image: "docker://cifuzz/cictl:2.18.1"
   entrypoint: "monitor_fuzzing.sh"

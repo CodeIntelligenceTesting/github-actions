@@ -11,15 +11,19 @@ If not specified, authentication will be attempted with Cognito.
 
 ### `cognito_user`
 
-Cognito user to authenticate with Code-Intelligence's fuzzing server.
+**Required** Cognito user to authenticate with Code-Intelligence's fuzzing server.
 
 ### `cognito_password`
 
-Password of the Cognito user used to authenticate with Code-Intelligence's fuzzing server.
+**Required** Password of the Cognito user used to authenticate with Code-Intelligence's fuzzing server.
+
+### `project`
+
+**Required** Name of the project to fuzz.
 
 ### `test_collection_run`
 
-**Required** Name of the Test Collection run that was started and outputted by the `start-fuzzing` GitHub Action.
+**Required** Display Name of the Test Collection run that was started and outputted by the `start-fuzzing` GitHub Action.
 
 ### `timeout`
 
@@ -63,10 +67,11 @@ Repository that contains the pull request.
 ```
 uses: CodeIntelligenceTesting/github-actions/monitor-fuzzing@master
 with:
-  ci_fuzz_api_token:    ${{ secrets.CI_FUZZ_API_TOKEN }}
-  test_collection_run:  ${{ steps.start-fuzzing.outputs.test_collection_run }}
-  github_token:         ${{ secrets.GITHUB_TOKEN }}
-  pull_request_number:  ${{ github.event.pull_request.number }}
-  owner:                ${{ github.event.repository.owner.login }}
-  repository:           ${{ github.event.repository.name }}
+  ci_fuzz_api_token: ${{ secrets.CI_FUZZ_API_TOKEN }}
+  project: ${{ env.PROJECT_NAME }}
+  test_collection_run: ${{ steps.start-fuzzing.outputs.test-collection-run }}
+  github_token: ${{ secrets.GITHUB_TOKEN }}
+  pull_request_number: ${{ github.event.pull_request.number }}
+  owner: ${{ github.event.repository.owner.login }}
+  repository: ${{ github.event.repository.name }}
 ```

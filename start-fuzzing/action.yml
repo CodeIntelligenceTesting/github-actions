@@ -10,8 +10,11 @@ inputs:
   cognito_password:
     description: "Cognito credentials to authenticate with Code-Intelligence's fuzzing server"
     required: false
+  project:
+    description: "Name of the project"
+    required: true
   test_collection:
-    description: "Full name of the Test Collection to fuzz"
+    description: "Name of the Test Collection in the specified project"
     required: true
   report_email:
     description: "E-mail to receive crash reports"
@@ -24,5 +27,5 @@ inputs:
     description: "Git reference used when pulling code from the repository to be fuzzed"
 runs:
   using: "docker"
-  image: "docker://cifuzz/github-action:v3"
+  image: "docker://cifuzz/cictl:2.18.1"
   entrypoint: "start_fuzzing.sh"
