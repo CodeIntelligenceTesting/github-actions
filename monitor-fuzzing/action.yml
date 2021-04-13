@@ -39,5 +39,5 @@ inputs:
     description: "Repository that contains the pull request"
 runs:
   using: "docker"
-  image: "docker://cifuzz/github-action:v3"
+  image: "docker://cifuzz/github-action:dev"
   entrypoint: "monitor_fuzzing.sh"
