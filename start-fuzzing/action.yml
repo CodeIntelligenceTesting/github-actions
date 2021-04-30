@@ -10,9 +10,10 @@ inputs:
   cognito_password:
     description: "Cognito credentials to authenticate with Code-Intelligence's fuzzing server"
     required: false
+  project:
+    description: "Resource name of the project to fuzz"
   test_collection:
     description: "Full name of the Test Collection to fuzz"
-    required: true
   report_email:
     description: "E-mail to receive crash reports"
     required: false
