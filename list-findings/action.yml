@@ -1,0 +1,27 @@
+name: 'List findings'
+description: 'List the found findings of a fuzzing run'
+inputs:
+  ci-fuzz-api-token:
+    description: 'CI Fuzz Access Token'
+    required: true
+  github-token:
+    description: 'Github Access Token'
+    required: true
+  serverUrl:
+    description: 'Server Url for fuzz testing'
+    required: true
+  projectId:
+    description: 'Id of the project'
+    required: true
+  repo:
+    description: 'repository'
+    required: true
+  name:
+    description: 'name of the check'
+    required: true
+  test_collection_run:
+    description: 'specific campaign run'
+    required: false
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
