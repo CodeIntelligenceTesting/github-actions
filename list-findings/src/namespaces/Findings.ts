@@ -29,7 +29,7 @@ export interface DebuggingInfo {
 }
 
 export interface BreakPoint {
-    source_file_path: SourceFilePath;
+    source_file_path: string;
     location: Location;
     function: string;
 }
@@ -37,15 +37,6 @@ export interface BreakPoint {
 export interface Location {
     line: number;
     column: number;
-}
-
-export enum SourceFilePath {
-    SrcConnectionsC = "src/connections.c",
-    SrcFdeventC = "src/fdevent.c",
-    SrcFdeventLinuxSysepollC = "src/fdevent_linux_sysepoll.c",
-    SrcNetworkC = "src/network.c",
-    SrcRequestC = "src/request.c",
-    SrcServerC = "src/server.c",
 }
 
 export interface Environment {
