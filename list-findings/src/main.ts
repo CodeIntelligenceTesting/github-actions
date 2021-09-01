@@ -85,7 +85,7 @@ function getFilteredFindings(findings: Finding[], testCollectionRun: string) {
 type GetInput = (name: string, options?: InputOptions | undefined) => string;
 
 function parseInputs(getInput: GetInput): Inputs.Args {
-    const repo = getInput('repo');
+    const repo = getInput('owner')+"/"+getInput('repository');
     const token = getInput('github-token', {required: true});
     const serverUrl = getInput('serverUrl', {required: true});
     const projectId = getInput('projectId', {required: true});
@@ -93,11 +93,6 @@ function parseInputs(getInput: GetInput): Inputs.Args {
     const testCollectionRun = getInput('test_collection_run', {required: false});
 
     const name = getInput('name');
-
-
-    if (repo && repo.split('/').length != 2) {
-        throw new Error('repo needs to be in the {owner}/{repository} format');
-    }
 
     return {
         repo,

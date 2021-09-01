@@ -13,7 +13,10 @@ inputs:
   projectId:
     description: 'Id of the project'
     required: true
-  repo:
+  owner:
+    description: 'owner'
+    required: true
+  repository:
     description: 'repository'
     required: true
   name:
