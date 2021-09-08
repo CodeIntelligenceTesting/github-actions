@@ -43,6 +43,17 @@ function getSummary(findings: Findings, testCollectionRun: string) {
   }
 }
 
+function getConclusion(annotations: CheckAnnotation[],
+    testCollectionRun: string) {
+  if (annotations.length == 0) {
+    if (testCollectionRun === undefined || testCollectionRun.length == 0) {
+      return 'failure';
+    }
+    return 'success';
+  }
+  return 'failure';
+}
+
 function unpackInputs(title: string, inputs: Args, findings: Findings)
     : Record<string, unknown> {
   const annotations = getFindingsStringArray(findings);
@@ -52,7 +63,7 @@ function unpackInputs(title: string, inputs: Args, findings: Findings)
       summary: getSummary(findings, inputs.testCollectionRun),
       annotations: annotations,
     },
-    conclusion: annotations.length == 0 ? 'success' : 'failure',
+    conclusion: getConclusion(annotations, inputs.testCollectionRun),
     completed_at: formatDate(),
   };
 }
