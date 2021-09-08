@@ -1,17 +1,17 @@
 name: 'List findings'
 description: 'List the found findings of a fuzzing run'
 inputs:
-  ci-fuzz-api-token:
+  ci_fuzz_api_token:
     description: 'CI Fuzz Access Token'
     required: true
-  github-token:
-    description: 'Github Access Token'
+  github_token:
+    description: 'GitHub Access Token'
     required: true
-  serverUrl:
-    description: 'Server Url for fuzz testing'
+  dashboard_address:
+    description: "URL of Code-Intelligence's fuzzing dashboard"
     required: true
-  projectId:
-    description: 'Id of the project'
+  project:
+    description: 'Name of the project'
     required: true
   owner:
     description: 'owner'

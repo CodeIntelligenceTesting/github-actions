@@ -90,10 +90,10 @@ type GetInput = (name: string, options?: InputOptions | undefined) => string;
 
 function parseInputs(getInput: GetInput): Inputs.Args {
   const repo = getInput('owner')+'/'+getInput('repository');
-  const token = getInput('github-token', {required: true});
-  const serverUrl = getInput('serverUrl', {required: true});
-  const projectId = getInput('projectId', {required: true});
-  const ciFuzzToken = getInput('ci-fuzz-api-token', {required: true});
+  const token = getInput('github_token', {required: true});
+  const serverUrl = getInput('dashboard_address', {required: true});
+  const projectId = getInput('project', {required: true});
+  const ciFuzzToken = getInput('ci_fuzz_api_token', {required: true});
   const testCollectionRun = getInput('test_collection_run', {required: false});
 
   const name = getInput('name');
