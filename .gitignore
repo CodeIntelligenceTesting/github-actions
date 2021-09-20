@@ -1,2 +1,4 @@
 .idea/
 .vscode/
+list-findings/node_modules
+list-findings/lib
