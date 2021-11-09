@@ -16,6 +16,13 @@ inputs:
   test_collection:
     description: "Name of the Test Collection in the specified project"
     required: false
+  fuzzing_artifact:
+    description: "Fuzzing artifact path. Used when building the fuzzing artifact in a github workflow."
+    required: false
+  checkout_directory:
+    description: "Directory of the repository checkout. Relative to the github workspace. Defaults to the github workspace."
+    required: false
+    default: ""
   report_email:
     description: "E-mail to receive crash reports"
     required: false
