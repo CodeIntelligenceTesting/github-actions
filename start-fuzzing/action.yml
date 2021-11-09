@@ -12,10 +12,10 @@ inputs:
     required: false
   project:
     description: "Name of the project"
-    required: true
+    required: false
   test_collection:
     description: "Name of the Test Collection in the specified project"
-    required: true
+    required: false
   report_email:
     description: "E-mail to receive crash reports"
     required: false
@@ -25,6 +25,7 @@ inputs:
     default: "grpc-api.code-intelligence.com:443"
   git_reference:
     description: "Git reference used when pulling code from the repository to be fuzzed"
+    required: false
 runs:
   using: "docker"
   image: "docker://cifuzz/github-action:v3"
