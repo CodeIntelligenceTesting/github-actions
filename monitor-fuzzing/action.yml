@@ -14,12 +14,12 @@ inputs:
     description: "Name of the project"
     required: true
   test_collection_run:
-    description: "Display Name of the Test Collection Run"
+    description: "Name of the Test Collection Run"
     required: true
   timeout:
     description: "Timeout (in seconds) to monitor the fuzzing. If no crash was found when it times out, the action is considered successful."
     required: false
-    default: 300
+    default: "300"
   findings_type:
     description: "Comma separated types of findings to monitor. Accepted values: UNKNOWN_ERROR, COMPILATION_ERROR, CRASH, WARNING, RUNTIME_ERROR."
     required: false
@@ -34,13 +34,17 @@ inputs:
     default: "https://app.code-intelligence.com"
   github_token:
     description: "GitHub token used by the GitHub API to create a comment in a pull request with a link to the finding"
+    required: false
   pull_request_number:
     description: "Number of the pull request where the comment with the finding link will be created"
+    required: false
   owner:
     description: "Owner of the repository that contains the pull request"
+    required: false
   repository:
     description: "Repository that contains the pull request"
+    required: false
 runs:
   using: "docker"
-  image: "docker://cifuzz/cictl:2.18.1"
+  image: "docker://cifuzz/github-action:latest"
   entrypoint: "monitor_fuzzing.sh"
