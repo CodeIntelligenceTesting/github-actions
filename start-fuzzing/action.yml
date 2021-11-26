@@ -35,5 +35,5 @@ inputs:
     required: false
 runs:
   using: "docker"
-  image: "docker://cifuzz/github-action:v3"
+  image: "docker://cifuzz/github-action:dev"
   entrypoint: "start_fuzzing.sh"
