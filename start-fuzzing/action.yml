@@ -33,6 +33,9 @@ inputs:
   git_reference:
     description: "Git reference used when pulling code from the repository to be fuzzed"
     required: false
+  application_base_url:
+    description: "The base URL of the application under test. Only relevant for web application fuzzing."
+    required: false
 runs:
   using: "docker"
   image: "docker://cifuzz/github-action:3.9.1"

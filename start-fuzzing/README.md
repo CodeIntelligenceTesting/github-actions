@@ -38,6 +38,10 @@ Set this input if you wish to use a fuzzing server other than Code-Intelligence'
 
 Git reference used when pulling code from the repository to be fuzzed.
 
+### `application_base_url`
+
+The base URL of the application under test. Only relevant for web application fuzzing.
+
 ## Outputs
 
 ### `test_collection_run`
