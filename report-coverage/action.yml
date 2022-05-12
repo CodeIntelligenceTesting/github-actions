@@ -36,5 +36,5 @@ inputs:
     description: "Git reference used when forming the URL to the files"
 runs:
   using: "docker"
-  image: "docker://cifuzz/github-action:3.11.0"
+  image: "docker://cifuzz/github-action:3.12.0"
   entrypoint: "report_coverage.sh"
