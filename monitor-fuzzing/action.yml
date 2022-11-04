@@ -23,7 +23,11 @@ inputs:
   findings_type:
     description: "Comma separated types of findings to monitor. Accepted values: UNKNOWN_ERROR, COMPILATION_ERROR, CRASH, WARNING, RUNTIME_ERROR."
     required: false
-    default: "CRASH"
+    default: "UNKNOWN_ERROR,COMPILATION_ERROR,CRASH,WARNING,RUNTIME_ERROR"
+  min_findings_severity:
+    description: "Minimum severity for findings that causes the pipeline to fail. Accepted values: LOW, MEDIUM, HIGH, CRITICAL."
+    required: false
+    default: "MEDIUM"
   fuzzing_server_address:
     description: "URL of Code-Intelligence's gRPC server for fuzzing"
     required: false
