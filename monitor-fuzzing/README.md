@@ -35,7 +35,15 @@ Timeout (in seconds) to monitor the fuzzing. If no crash was found when it times
 
 Comma separated types of findings to monitor. Accepted values: `UNKNOWN_ERROR`, `COMPILATION_ERROR`, `CRASH`, `WARNING`, `RUNTIME_ERROR`.
 
-**Default** `CRASH`.
+**Default** `UNKNOWN_ERROR,COMPILATION_ERROR,CRASH,WARNING,RUNTIME_ERROR`.
+
+### `min_findings_severity`
+
+Minimum severity for findings that causes the pipeline to fail. Findings with
+lower severity are still reported but do not fail the pipeline.
+Accepted values: `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`
+
+**Default** `MEDIUM`.
 
 ### `fuzzing_server_address`
 
