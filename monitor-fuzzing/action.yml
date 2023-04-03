@@ -50,5 +50,5 @@ inputs:
     required: false
 runs:
   using: "docker"
-  image: "docker://cifuzz/github-action:v4"
+  image: "docker://cifuzz/github-action:v5"
   entrypoint: "monitor_fuzzing.sh"
