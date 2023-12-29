@@ -1,6 +1,0 @@
-
-name: "Install Fuzzer Build Tools"
-description: "Installs ci-build and dependant tools into the current workspace."
-runs:
-  using: "docker"
-  image: "docker://cifuzz/build-tools-installer:dev"
