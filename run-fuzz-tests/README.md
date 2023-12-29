@@ -1,10 +1,8 @@
 # Save Fuzz Test Results
 
-This action retreives the findings and code coverage for a campaign run and stores them in the files 
-`findings.json` and `coverage.json`. Using the `actions/upload-artifact@v2` action these can be saved
-in a workflow archive.
-
-Note: The cifuzz GitHub App relies on this workflow artifact to post pull request comments.
+This action starts a fuzzers in CI Sense and monitors the result for
+a specified time. If a finding with configurable severity is found
+the action will fail.
 
 ## Inputs
 
@@ -16,17 +14,26 @@ Note: The cifuzz GitHub App relies on this workflow artifact to post pull reques
 
 **Required** Name of the project in CI Sense.
 
-### `started_run`
+### `repository_dir`
 
-**Required** JSON response of the launch run API call. This is output by the `run-fuzz-tests` GitHub Action.
+**Required** Path to the CI Fuzz configured git repository.
+
+### `timeout`
+
+Timeout until the pipeline is marked as 'success' if during that time no failing findings are found.
+
+### `min_findings_severity`
+
+Minimum severity for findings that causes the pipeline to fail. Findings with lower severity are
+still reported but do not fail the pipeline. Possible values: 'LOW', 'MEDIUM', 'HIGH', 'CRITICAL'.
 
 ### `ci_sense_http_url`
 
 CI Sense HTTP API endpoint.
 
-### `ci_sense_grpc_url`
+### `fuzz_tests`
 
-CI Sense gRPC API endpoint.
+Fuzz tests to run.
 
 ## Example usage
 

@@ -1,25 +1,45 @@
 name: "Save Fuzz Test Results"
 description: "Save findings and coverage of a CI Fuzz workflow run"
 inputs:
-  ci_fuzz_api_token:
-    description: "Token generated in the web app, used for authenticating with the fuzzing server"
+  ci_sense_api_token:
+    description: "Token for the CI Sense API."
     required: true
-  project:
-    description: "Name of the project"
+  project_name:
+    description: "The CI Sense project name."
     required: true
-  test_collection_run:
-    description: "Name of the Test Collection Run"
+  started_run:
+    description: "Started run as a JSON string."
     required: true
-  fuzzing_server_address:
-    description: "URL of Code-Intelligence's gRPC server for fuzzing"
-    required: false
-    default: "api.code-intelligence.com:6773"
-  dashboard_address:
-    description: "URL of Code-Intelligence's fuzzing dashboard"
-    required: false
+  ci_sense_http_url:
+    description: "The CI Sense HTTP endpoint."
+    default: "https://app.code-intelligence.com"
+  ci_sense_grpc_url:
+    description: "The CI Sense gRPC endpoint."
     default: "https://app.code-intelligence.com"
 
 runs:
   using: "docker"
   image: "docker://cifuzz/github-action:v5"
-  entrypoint: "export_results.sh"
+  entrypoint: "/bin/bash"
+  args:
+    - "-c"
+    - |
+      # Map the started v3 API run to a v1 API campaign_run.
+      RUN_NID=$(echo '${{ inputs.started_run }}' | jq -r ".run.nid")
+      CAMPAIGN_RUNS_URL="${{ inputs.ci_sense_http_url }}/v1/projects/${{ inputs.project_name }}/campaign_runs"
+      curl "$CAMPAIGN_RUNS_URL?filter=nid=$RUN_NID" \
+          -H "Authorization: Bearer ${{ inputs.ci_sense_api_token }}" \
+          | jq ".campaign_runs[0]" \
+          > campaign_run.json
+
+      echo "RUN NID $RUN_NID"
+      curl "$CAMPAIGN_RUNS_URL?filter=nid=$RUN_NID" \
+          -H "Authorization: Bearer ${{ inputs.ci_sense_api_token }}" | jq
+
+      cat campaign_run.json | jq -r ".name"
+      export INPUT_TEST_COLLECTION_RUN=$(cat campaign_run.json | jq -r ".name")
+      export INPUT_PROJECT_NAME="projects/${{ inputs.project_name }}"
+      export INPUT_FUZZING_SERVER_ADDRESS=${{ inputs.ci_sense_grpc_url }}
+      export INPUT_DASHBOARD_ADDRESS=${{ inputs.ci_sense_http_url }}
+      export INPUT_CI_FUZZ_API_TOKEN=${{ inputs.ci_sense_api_token }}
+      export_results.sh

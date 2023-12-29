@@ -21,27 +21,42 @@ inputs:
       the pipeline.
       Possible values: 'LOW', 'MEDIUM', 'HIGH', 'CRITICAL'"
     default: "MEDIUM"
-  ci_sense_url:
+  ci_sense_http_url:
     description: "The CI Sense URL."
     default: "https://app.code-intelligence.com"
   fuzz_tests:
-    description: "Fuzz tests to test."
+    description: "Fuzz tests to run."
     default: ""
+outputs:
+  started_run:
+    description: "The response of the launch run request as JSON."
+    value: ${{ steps.run-fuzz-tests.outputs.started_run }}
 runs:
   using: "composite"
   steps:
-    - shell: bash
+    - id: run-fuzz-tests
+      shell: bash
       run: |
         # Login to CI Sense
-        echo "${{ inputs.ci_sense_api_token }}" | cifuzz login --server "${{ inputs.ci_sense_url }}"
+        echo "${{ inputs.ci_sense_api_token }}" | cifuzz login --server "${{ inputs.ci_sense_http_url }}"
 
         # Start remote run using fuzz containers and wait $TIMEOUT for findings.
-        cifuzz container remote-run ${{ inputs.fuzz_tests }} \
+        CIFUZZ_EXIT_CODE=0
+        RUN=$(cifuzz container remote-run ${{ inputs.fuzz_tests }} \
           --monitor \
           --monitor-duration="${{ inputs.timeout }}" \
           --min-finding-severity="${{ inputs.min_findings_severity }}" \
           --project="${{ inputs.project_name }}" \
-          --server="${{ inputs.ci_sense_url }}" \
+          --server="${{ inputs.ci_sense_http_url }}" \
           --branch="${{ github.head_ref || github.ref_name }}" \
-          --directory="${{ inputs.repository_dir }}"
-          -v
+          --directory="${{ inputs.repository_dir }}" \
+          --json \
+          -v) || CIFUZZ_EXIT_CODE=$?
+        # Output the result so that `save-results` can collect finding information.
+        echo "started_run=$RUN"
+        {
+          echo 'started_run<<EOF'
+          echo $RUN
+          echo EOF
+        } >> "$GITHUB_OUTPUT"
+        exit $CIFUZZ_EXIT_CODE
