@@ -1,0 +1,24 @@
+
+name: "Install CI Fuzz"
+description: "Installs cifuzz into the current workspace."
+inputs:
+  version: 
+    description: "cifuzz version to install"
+    required: true
+    default: "latest"
+  download_token:
+    description: "Download token for the Code Intelligence download portal https://downloads.code-intelligence.com."
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: |
+          if ! [ -x "$(command -v curl)" ]; then
+            sudo apt update && sudo apt install -qy curl
+          fi
+          CI_FUZZ_DOWNLOAD_URL="https://downloads.code-intelligence.com/download/cifuzz/linux_amd64/latest?token=${{ inputs.download_token }}"
+          curl --fail --silent --show-error --location -o cifuzz_installer "$CI_FUZZ_DOWNLOAD_URL"
+          chmod u+x cifuzz_installer
+          ./cifuzz_installer
+          # echo "PATH=$HOME/.cifuzz/bin:$PATH" >> $GITHUB_ENV
+      shell: bash
