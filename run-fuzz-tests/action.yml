@@ -1,0 +1,47 @@
+
+name: "Run Fuzz Tests"
+description: "Run fuzz tests in CI Sense."
+inputs:
+  ci_sense_api_token:
+    description: "Token for the CI Sense API."
+    required: true
+  project_name:
+    description: "The CI Sense project name."
+    required: true
+  repository_dir:
+    description: "Path to the CI Fuzz configured repository."
+    required: true
+  timeout: 
+    description: "Timeout until the pipeline is marked as 'success' if during that time no failing findings are found."
+    default: "5m"
+  min_findings_severity:
+    description: | 
+      Minimum severity for findings that causes the pipeline to fail.
+      Findings with lower severity are still reported but do not fail
+      the pipeline.
+      Possible values: 'LOW', 'MEDIUM', 'HIGH', 'CRITICAL'"
+    default: "MEDIUM"
+  ci_sense_url:
+    description: "The CI Sense URL."
+    default: "https://app.code-intelligence.com"
+  fuzz_tests:
+    description: "Fuzz tests to test."
+    default: ""
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: |
+        # Login to CI Sense
+        echo "${{ inputs.ci_sense_api_token }}" | cifuzz login --server "${{ inputs.ci_sense_url }}"
+
+        # Start remote run using fuzz containers and wait $TIMEOUT for findings.
+        cifuzz container remote-run ${{ inputs.fuzz_tests }} \
+          --monitor \
+          --monitor-duration="${{ inputs.timeout }}" \
+          --min-finding-severity="${{ inputs.min_findings_severity }}" \
+          --project="${{ inputs.project_name }}" \
+          --server="${{ inputs.ci_sense_url }}" \
+          --branch="${{ github.head_ref || github.ref_name }}" \
+          --directory="${{ inputs.repository_dir }}"
+          -v
