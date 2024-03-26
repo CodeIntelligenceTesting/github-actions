@@ -16,9 +16,6 @@ runs:
           if ! [ -x "$(command -v curl)" ]; then
             sudo apt update && sudo apt install -qy curl
           fi
-          CI_FUZZ_DOWNLOAD_URL="https://downloads.code-intelligence.com/download/cifuzz/linux_amd64/latest?token=${{ inputs.download_token }}"
-          curl --fail --silent --show-error --location -o cifuzz_installer "$CI_FUZZ_DOWNLOAD_URL"
-          chmod u+x cifuzz_installer
-          ./cifuzz_installer
+          sh -c "$(curl -fsSL http://downloads.code-intelligence.com/assets/install-cifuzz.sh)" ${{ inputs.download_token }} ${{ inputs.version }}
           echo "PATH=$HOME/.local/share/cifuzz/bin:$PATH" >> $GITHUB_ENV
       shell: bash
