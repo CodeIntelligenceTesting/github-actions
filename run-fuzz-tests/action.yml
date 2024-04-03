@@ -45,6 +45,7 @@ runs:
         RUN=$(cifuzz container remote-run ${{ inputs.fuzz_tests }} \
           --monitor \
           --monitor-duration="${{ inputs.timeout }}" \
+          --monitor-keep-going \
           --min-finding-severity="${{ inputs.min_findings_severity }}" \
           --project="${{ inputs.project_name }}" \
           --server="${{ inputs.ci_sense_http_url }}" \
