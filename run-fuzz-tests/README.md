@@ -35,6 +35,10 @@ CI Sense HTTP API endpoint.
 
 Fuzz tests to run.
 
+### `additional_cifuzz_args`
+
+Additional arguments to pass to cifuzz.
+
 ## Example usage
 
 ```

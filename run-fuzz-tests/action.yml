@@ -27,6 +27,9 @@ inputs:
   fuzz_tests:
     description: "Fuzz tests to run."
     default: ""
+  additional_cifuzz_args:
+    description: "Additional arguments to pass to cifuzz."
+    default: ""
 outputs:
   started_run:
     description: "The response of the launch run request as JSON."
@@ -52,6 +55,7 @@ runs:
           --branch="${{ github.head_ref || github.ref_name }}" \
           --directory="${{ inputs.repository_dir }}" \
           --json \
+          ${{ inputs.additional_cifuzz_args }} \
           -v) || CIFUZZ_EXIT_CODE=$?
         # Output the result so that `save-results` can collect finding information.
         echo "started_run=$RUN"
